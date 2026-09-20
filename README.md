@@ -128,12 +128,14 @@ pip install -r ./requirements.txt
 1. 镜像构建
 
    ```shell
-   # 先确保linux环境装有git-lfs和git
-   # 并且git-lfs执行过 git lfs install
    # 从远端仓库拉取项目到本地的或者服务器的当前路径
    git clone -b main https://github.com/NutshellLee/funasr-asr-server.git
    cd funasr-asr-server
-   # 模型权重与 torch wheels 体积较大，未纳入 git 仓库，请按文档单独下载
+   # 模型权重与以下 4 个 wheel 未纳入仓库，构建镜像前请先下载放入本目录：
+   #   torch-2.2.1+cu118-cp38-cp38-linux_x86_64.whl
+   #   torchaudio-2.2.1+cu118-cp38-cp38-linux_x86_64.whl
+   #   nvidia_cudnn_cu11-8.7.0.84-py3-none-manylinux1_x86_64.whl
+   #   nvidia_cublas_cu11-11.11.3.6-py3-none-manylinux1_x86_64.whl
 
    # 执行构建docker镜像
    cd FunASR/docker/
