@@ -1,0 +1,32 @@
+# Model weights (download from ModelScope instead, see README.md)
+models_from_modelscope/
+
+# Offline wheel packages (install with pip instead, see docker/Dockerfile)
+*.whl
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Logs and runtime output
+*.log
+logs/
+outputs/
+tmp/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

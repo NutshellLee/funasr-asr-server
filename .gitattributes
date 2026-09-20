@@ -1,0 +1,4 @@
+nvidia_cublas_cu11-11.11.3.6-py3-none-manylinux1_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+nvidia_cudnn_cu11-8.7.0.84-py3-none-manylinux1_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+torch-2.2.1+cu118-cp38-cp38-linux_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+torchaudio-2.2.1+cu118-cp38-cp38-linux_x86_64.whl filter=lfs diff=lfs merge=lfs -text
