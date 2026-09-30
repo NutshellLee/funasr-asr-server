@@ -27,13 +27,13 @@ pip install -r ./requirements.txt
 1. 数据说明
 
    * 测试数据集:    
-   [aishell4-test](/home/share/dataset/base_data/asr/paraformer_related_datasets/aishell4-test)   
+   aishell4-test   
    aishell4的test数据集13小时，涉及20个大中小型会议室的多人讨论音频，有20种议题的讨论。 
-   [cantonese_audio](/home/share/dataset/base_data/asr/paraformer_related_datasets/cantonese_audio)   
+   cantonese_audio   
    cantonese_audio有六段我在网上合成的以及样例下载的音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
-   [chinese_audio](/home/share/dataset/base_data/asr/paraformer_related_datasets/chinese_audio)   
+   chinese_audio   
    cantonese_audio有六段我在网上合成的以及样例下载的音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
-   [ST-CMDS-20170001_1-OS](/home/share/dataset/base_data/asr/paraformer_related_datasets/ST-CMDS-20170001_1-OS)   
+   ST-CMDS-20170001_1-OS   
    ST-CMDS-20170001_1-OS是一个142小时的文学小说里面节选短句子的音频数据集，吐字清晰、在安静环境下录制，可作为benchmark重要参考之一。
 
    * 数据预处理: `无需单独预处理`
@@ -87,8 +87,8 @@ pip install -r ./requirements.txt
    ```shell
    cd FunASR/
    # 拷贝需要评测的数据集到项目根目录里
-   sudo cp -r /home/share/dataset/base_data/asr/paraformer_related_datasets/aishell4-test ./additional    #该数据集较大，可以需要评测时再拷贝
-   sudo cp -r /home/share/dataset/base_data/asr/paraformer_related_datasets/ST-CMDS-20170001_1-OS ./additional    #该数据集较大，可以需要评测时再拷贝
+   sudo cp -r <你的数据集目录>/aishell4-test ./additional    #该数据集较大，可以需要评测时再拷贝
+   sudo cp -r <你的数据集目录>/ST-CMDS-20170001_1-OS ./additional    #该数据集较大，可以需要评测时再拷贝
 
    # 运行ST-CMDS-20170001_1-OS数据集的推理评测脚本（老版本脚本），选取的是离线模式的加断句和标点的paraformer_large模型
    # 会生成包含推理结果的txt文件，叫“paraformer_punc_ST.txt”
