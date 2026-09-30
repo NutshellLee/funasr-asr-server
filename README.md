@@ -26,15 +26,12 @@ pip install -r ./requirements.txt
 
 1. 数据说明
 
-   * 测试数据集:    
-   aishell4-test   
-   aishell4的test数据集13小时，涉及20个大中小型会议室的多人讨论音频，有20种议题的讨论。 
-   cantonese_audio   
-   cantonese_audio有六段我在网上合成的以及样例下载的音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
-   chinese_audio   
-   cantonese_audio有六段我在网上合成的以及样例下载的音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
-   ST-CMDS-20170001_1-OS   
-   ST-CMDS-20170001_1-OS是一个142小时的文学小说里面节选短句子的音频数据集，吐字清晰、在安静环境下录制，可作为benchmark重要参考之一。
+   * 测试数据集:
+
+     - **aishell4-test**：test数据集13小时，涉及20个大中小型会议室的多人讨论音频，有20种议题的讨论。
+     - **cantonese_audio**：我在网上合成与样例下载共6段音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
+     - **chinese_audio**：我在网上合成与样例下载共6段音频，可用于参考粤语的效果，其中sample3和8k_canto为重复内容、不同的人讲的。
+     - **ST-CMDS-20170001_1-OS**：142小时的文学小说节选短句音频，吐字清晰、在安静环境下录制，可作为benchmark重要参考之一。
 
    * 数据预处理: `无需单独预处理`
 
