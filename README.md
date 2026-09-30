@@ -120,7 +120,12 @@ pip install -r ./requirements.txt
 
    * paraformer-large在aishell4测试集的CER错误率在0.16954566，推理总时长2653653ms
    * 集成断句和标点符号以后，CER在0.22595654，推理总时长5526023ms。
-   * 原本使用的腾讯ASR在aishell4测试集的CER在0.27416548，推理总时长1499670ms，并且已经包含了断句和标点符号。
+
+   结论（我的取舍）：
+
+   * 加了断句和标点后 CER 从 0.170 升到 0.226，这不是识别变差，而是评测口径变了——标点符号也计入错误位，两行数字不能直接比较精度。
+   * 代价在延迟：推理总耗时从 2654 s 涨到 5526 s，约 2.1 倍（按 aishell4-test 13 小时音频算，约从 17 倍实时降到 8.5 倍实时）。
+   * 因此离线整段识别用「ASR + 断句 + 标点」；实时场景只跑纯 ASR，标点交给 2pass 的第二次离线推理补——这也是本项目同时保留离线 / 实时 / 2pass 三套接口的原因。
 
 
 ### Docker部署
@@ -173,36 +178,3 @@ pip install -r ./requirements.txt
    cd FunASR/
    python fast_api_server.py
    ```
-
-
-### ***附录：文件夹软链接***
-
-`aishell4-test`: `/home/share/dataset/base_data/asr/paraformer_related_datasets/aishell4-test`
-
-`cantonese_audio`: `/home/share/dataset/base_data/asr/paraformer_related_datasets/cantonese_audio`
-
-`chinese_audio`: `/home/share/dataset/base_data/asr/paraformer_related_datasets/chinese_audio`
-
-`ST-CMDS-20170001_1-OS`: `/home/share/dataset/base_data/asr/paraformer_related_datasets/ST-CMDS-20170001_1-OS`
-
-`punc_ct-transformer_zh-cn-common-vad_realtime-vocab272727`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/punc_ct-transformer_zh-cn-common-vad_realtime-vocab272727`
-
-`punc_ct-transformer_zh-cn-common-vocab272727-pytorch`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/punc_ct-transformer_zh-cn-common-vocab272727-pytorch`
-
-`speech_fsmn_vad_zh-cn-16k-common-pytorch`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_fsmn_vad_zh-cn-16k-common-pytorch`,
-
-`speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online`
-
-`speech_paraformer-large-vad-punc_asr_nat-zh-cn-16k-common-vocab8404-pytorch`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_paraformer-large-vad-punc_asr_nat-zh-cn-16k-common-vocab8404-pytorch`
-
-`speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch`
-
-`speech_campplus_sv_zh-cn_16k-common`: `/home/share/model_weight/base_model/asr/campplus/speech_campplus_sv_zh-cn_16k-common`
-
-`speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch`
-
-`speech_timestamp_prediction-v1-16k-offline`: `/home/share/model_weight/base_model/asr/paraformer/models_from_modelscope/iic/speech_timestamp_prediction-v1-16k-offline`
-
-`torchaudio-2.2.1+cu118-cp38-cp38-linux_x86_64.whl`: `/home/share/model_weight/base_model/asr/paraformer/torchaudio-2.2.1+cu118-cp38-cp38-linux_x86_64.whl`
-
-`torch-2.2.1+cu118-cp38-cp38-linux_x86_64.whl`: `/home/share/model_weight/base_model/asr/paraformer/torch-2.2.1+cu118-cp38-cp38-linux_x86_64.whl`
